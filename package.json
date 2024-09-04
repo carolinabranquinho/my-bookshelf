@@ -11,6 +11,8 @@
     "test-ct": "playwright test -c playwright-ct.config.ts"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.4",
+    "@tanstack/react-query": "^5.53.3",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

@@ -6,16 +6,20 @@ import {
 } from "firebase/auth";
 
 export default function useAuthenticationMethods() {
-  async function signup(email: string, password: string) {
+  async function signup(
+    email: string,
+    password: string,
+    onSuccess: (uid: string) => void,
+    onError: (error: string) => void,
+  ) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        onSuccess(user.uid);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        console.error(error.message);
+        onError(error.message);
       });
   }
 
@@ -31,10 +35,8 @@ export default function useAuthenticationMethods() {
         onSuccess(user.uid);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        onError(error);
-        console.log(errorCode, errorMessage);
+        console.error(error.message);
+        onError(error.message);
       });
   }
 
@@ -44,7 +46,7 @@ export default function useAuthenticationMethods() {
         console.log("logout");
       })
       .catch((error) => {
-        console.error(error);
+        console.error(error.message);
       });
   }
 

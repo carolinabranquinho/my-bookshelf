@@ -1,10 +1,10 @@
 import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./config/tanstack-query-client";
-import Homepage from "./pages/Homepage";
+import { queryClient } from "@/config/tanstack-query-client";
+import Homepage from "@/pages/Homepage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import BookDetails from "./pages/Bookdetails";
-import Userhomepage from "./pages/Userhomepage";
-import { AuthProvider } from "./context/authContext";
+import BookDetails from "@/pages/Bookdetails";
+import Userhomepage from "@/pages/Userhomepage";
+import { AuthProvider } from "@/context/AuthContext";
 
 const router = createBrowserRouter([
   {

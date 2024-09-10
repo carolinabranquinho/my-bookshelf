@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 export default function BookDetails() {
   const { id } = useParams();
   const { data } = useBookDetails(id);
-  console.log(data);
   return data ? (
     <div>
       <h2>Book Title: {data.volumeInfo.title}</h2>

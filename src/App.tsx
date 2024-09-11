@@ -5,23 +5,29 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import BookDetails from "@/pages/Bookdetails";
 import Userhomepage from "@/pages/Userhomepage";
 import { AuthProvider } from "@/context/AuthContext";
+import Layout from "./components/Layout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
-  },
-  {
-    path: "/user/:id",
-    element: <Userhomepage />,
-  },
-  {
-    path: "/book/:id",
-    element: <BookDetails />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Homepage />,
+      },
+      {
+        path: "/user/",
+        element: <Userhomepage />,
+      },
+      {
+        path: "/book/:id",
+        element: <BookDetails />,
+      },
+    ],
   },
 ]);
 
-//TODO: create a navbar component
 function App() {
   return (
     <AuthProvider>

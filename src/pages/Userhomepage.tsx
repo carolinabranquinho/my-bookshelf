@@ -1,16 +1,16 @@
 import Search from "@/components/Search";
 import { BookData } from "@/components/utils/types";
-import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "@/context/AuthContext";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Userhomepage() {
-  const { id } = useParams();
-
   const [selectedItem, setSelectedItem] = useState<BookData | undefined>();
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <>
-      <p>User: {id}</p>
+      <p>User: {currentUser?.uid}</p>
       <Search handleSelectedItem={setSelectedItem} />
       {selectedItem ? (
         <div>

@@ -50,8 +50,8 @@ export default function Dialog({ method, isOpen, setIsOpen }: DialogProps) {
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState("");
 
-  function onSucess(id: string) {
-    navigate(`/user/${id}`);
+  function onSucess() {
+    navigate(`/user`);
     setIsOpen(false);
   }
 

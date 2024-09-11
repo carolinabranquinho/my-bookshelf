@@ -9,13 +9,12 @@ export default function useAuthenticationMethods() {
   async function signup(
     email: string,
     password: string,
-    onSuccess: (uid: string) => void,
+    onSuccess: () => void,
     onError: (error: string) => void,
   ) {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        onSuccess(user.uid);
+      .then(() => {
+        onSuccess();
       })
       .catch((error) => {
         console.error(error.message);
@@ -26,13 +25,12 @@ export default function useAuthenticationMethods() {
   async function singinWithEmail(
     email: string,
     password: string,
-    onSuccess: (uid: string) => void,
+    onSuccess: () => void,
     onError: (error: string) => void,
   ) {
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        onSuccess(user.uid);
+      .then(() => {
+        onSuccess();
       })
       .catch((error) => {
         console.error(error.message);
